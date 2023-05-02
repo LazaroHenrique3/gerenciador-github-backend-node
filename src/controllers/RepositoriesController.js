@@ -47,12 +47,12 @@ class RepositoriesController {
                 return res.status(404).json()
             }
 
-            //Verificando se o repositório já existe
+            //Verificando se o repositório já existe para esse usuário
             const repository = await Repository.findOne({
                 userId: user_id,
                 url
             })
-
+            
             if (repository) {
                 return res.status(422).json({ msg: `Repository ${name} already exists.` })
             }
